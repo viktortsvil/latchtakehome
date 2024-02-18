@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+## How To Run:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`npm install --legacy-peer-deps`
 
-## Available Scripts
+`npm start`
 
-In the project directory, you can run:
+## Feature Description 
 
-### `npm start`
+The project meets most requirements as defined on the Notion page. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* The input JSON is parsed recursively (see `parseInput()` in `utils.js`). All types of content are parsed as expected (e.g. different headers, text, etc).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* `mention` elements are parsed in a way that ensures that only one copy of each unique mention is rendered. Having "single source of truth" for the `mention` objects enables us to have one place from which we can change the value (or color) in the whole document.
 
-### `npm test`
+* Bold/Italic/Underlined text formatting is supported recursively. Thus, it can be added to any element, and respective formatting will be added to every child element. Note: for some reason, I did not manage to render italic text properly, but the bold/underlined works as expected. I believe there is some typo that I am not able to catch at the moment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Clause elements behave like ordered list elements while also supporting nested non-list elements. The Optional Bonus Task has also been completed to an extent - clauses that are siblings continue their numbering as expected. It can be seen that this is not always the case in the `input.json` file.
 
-### `npm run build`
+* The code is fairly readable. It contains comments in parts that might be less clear. The code is split into functions and is straightforward to build on, although it could benefit from some further refactoring.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Some other notes:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* I've not worked with material-ui much in the past, so I used a mix of pure React and material-ui to make development easier. A looser time constraint would enable me to be more consistent with the tools I use.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* I didn't adhere perfectly to the styling as shown in the example. Instead, I focused on the functionality and extendability of the code.
